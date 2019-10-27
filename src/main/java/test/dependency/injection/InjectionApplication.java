@@ -3,12 +3,14 @@ package test.dependency.injection;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import test.dependency.injection.controller.ConstructorController;
 import test.dependency.injection.controller.MyController;
 import test.dependency.injection.controller.PropertyController;
 import test.dependency.injection.controller.SetterController;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {"test.dependency.injection.controller","test.dependency.injection.service"})
 public class InjectionApplication {
 
     public static void main(String[] args) {
