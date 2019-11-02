@@ -3,27 +3,19 @@ package test.dependency.injection;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import test.dependency.injection.controller.ConstructorController;
-import test.dependency.injection.controller.MyController;
-import test.dependency.injection.controller.PropertyController;
-import test.dependency.injection.controller.SetterController;
+import test.dependency.injection.examplebeans.FakeDataSource;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"test.dependency.injection.controller","test.dependency.injection.service"})
 public class InjectionApplication {
 
     public static void main(String[] args) {
 
         ApplicationContext ctx = SpringApplication.run(InjectionApplication.class, args);
 
-        MyController myController=(MyController) ctx.getBean("myController");
+        FakeDataSource fakeDataSource=(FakeDataSource)ctx.getBean(FakeDataSource.class);
+        System.out.println(fakeDataSource.getUser());
 
-        System.out.println(myController.sayHello());
 
-        System.out.println(ctx.getBean(SetterController.class).sayHello());
-        System.out.println(ctx.getBean(ConstructorController.class).sayHello());
-        System.out.println(ctx.getBean(PropertyController.class).sayHello());
     }
 
 }
